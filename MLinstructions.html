@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ML Instructions</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(135deg, #1a1a1a, #2d2d2d, #1a1a1a);
+            min-height: 100vh;
+            padding: 20px;
+            color: #ffffff;
+            position: relative;
+            overflow-x: hidden;
+        }
+        
+        body::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(white, rgba(255,255,255,.2) 2px, transparent 3px),
+                radial-gradient(white, rgba(255,255,255,.15) 1px, transparent 2px),
+                radial-gradient(white, rgba(255,255,255,.1) 2px, transparent 3px);
+            background-size: 550px 550px, 350px 350px, 250px 250px;
+            background-position: 0 0, 40px 60px, 130px 270px;
+            z-index: 1;
+            animation: starTwinkle 15s linear infinite;
+        }
+
+        .ml-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            position: relative;
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 90vh;
+        }
+
+        .image-container {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 4px 25px rgba(0,0,0,0.2);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.1);
+            width: 100%;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .img-fluid {
+            max-width: 80%;
+            height: auto;
+            margin: 0 auto;
+        }
+
+        .btn {
+            margin: 5px;
+            min-width: 120px;
+        }
+
+        .back-link {
+            color: white;
+            text-decoration: none;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="ml-container">
+        <h1 class="text-center mb-4">A Simple Interactive Machine Language</h1>
+        
+        <div class="image-container">
+            <img id="MLinstrucitons" src="MLblank.png" class="img-fluid">
+            <img id="Englishinstrucitons" src="" class="img-fluid mt-3">
+        </div>
+
+        <div class="button-container">
+            <button class="btn btn-primary" onclick="document.getElementById('MLinstrucitons').src='ML1.png'; document.getElementById('Englishinstrucitons').src='EI1.png'">156C</button>
+            <button class="btn btn-info" onclick="document.getElementById('MLinstrucitons').src='ML2.png'; document.getElementById('Englishinstrucitons').src='EI2.png'">166D</button>
+            <button class="btn btn-success" onclick="document.getElementById('MLinstrucitons').src='ML3.png'; document.getElementById('Englishinstrucitons').src='EI3.png'">5056</button>
+            <button class="btn btn-warning" onclick="document.getElementById('MLinstrucitons').src='ML4.png'; document.getElementById('Englishinstrucitons').src='EI4.png'">306E</button>
+            <button class="btn btn-danger" onclick="document.getElementById('MLinstrucitons').src='ML5.png'; document.getElementById('Englishinstrucitons').src='EI5.png'">C000</button>
+        </div>
+
+        <a href="index.html" class="back-link">Back to Home</a>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

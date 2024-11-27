@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FoC - Projects</title>
+    <!-- Updated Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-color: #0a192f;
+            color: #ccd6f6;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-image: url('dark-scenery.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(10, 25, 47, 0.85);
+            z-index: -1;
+        }
+
+        .navbar {
+            margin-bottom: 0;
+            background-color: rgba(10, 25, 47, 0.95);
+            border: 0;
+            font-size: 13px !important;
+            letter-spacing: 3px;
+            opacity: 0.95;
+            transition: all 0.3s ease;
+        }
+
+        .navbar-nav li a {
+            color: #64ffda !important;
+        }
+
+        .navbar-nav li a:hover {
+            color: #ccd6f6 !important;
+        }
+
+        .icon-bar {
+            background-color: #64ffda !important;
+        }
+
+        .container-fluid {
+            min-height: calc(100vh - 160px);
+            padding: 20px;
+        }
+
+        .card {
+            background: rgba(10, 25, 47, 0.8);
+            border: 1px solid #64ffda;
+            border-radius: 15px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 20px rgba(100, 255, 218, 0.15);
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 25px rgba(100, 255, 218, 0.25);
+        }
+
+        .card-title {
+            color: #64ffda;
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 1.5rem;
+        }
+
+        .card-text {
+            color: #ccd6f6;
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+
+        .project-list {
+            list-style: none;
+            padding: 0;
+            margin: 2rem 0;
+        }
+
+        .project-list li {
+            margin-bottom: 1rem;
+            padding: 1rem;
+            border: 1px solid rgba(100, 255, 218, 0.2);
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .project-list li:hover {
+            background: rgba(100, 255, 218, 0.1);
+            transform: translateX(10px);
+        }
+
+        footer {
+            background: rgba(10, 25, 47, 0.9);
+            color: #64ffda;
+            padding: 1rem;
+            text-align: center;
+            border-top: 1px solid rgba(100, 255, 218, 0.2);
+        }
+
+        .section-title {
+            font-size: 3.5rem;
+            color: #64ffda;
+            text-align: center;
+            margin-bottom: 1rem;
+            font-weight: 700;
+            letter-spacing: -1px;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: #8892b0;
+            font-size: 1.2rem;
+            margin-bottom: 3rem;
+        }
+
+        .project-card {
+            margin-bottom: 30px;
+            perspective: 1000px;
+        }
+
+        .project-card-inner {
+            background: rgba(17, 34, 64, 0.95);
+            border-radius: 20px;
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid rgba(100, 255, 218, 0.1);
+        }
+
+        .project-card-inner:hover {
+            transform: translateY(-10px);
+            border-color: #64ffda;
+            box-shadow: 0 10px 30px -15px rgba(100, 255, 218, 0.3);
+        }
+
+        .project-number {
+            font-size: 5rem;
+            font-weight: 800;
+            color: rgba(100, 255, 218, 0.1);
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .project-card-inner:hover .project-number {
+            color: rgba(100, 255, 218, 0.2);
+            transform: scale(1.1);
+        }
+
+        .project-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .project-content h3 {
+            color: #e6f1ff;
+            font-size: 1.75rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .project-content p {
+            color: #8892b0;
+            font-size: 1rem;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .tech-stack {
+            margin-bottom: 1.5rem;
+        }
+
+        .tech-tag {
+            display: inline-block;
+            padding: 0.3rem 0.8rem;
+            margin-right: 0.5rem;
+            margin-bottom: 0.5rem;
+            background: rgba(100, 255, 218, 0.1);
+            color: #64ffda;
+            border-radius: 15px;
+            font-size: 0.85rem;
+            transition: all 0.3s ease;
+        }
+
+        .tech-tag:hover {
+            background: rgba(100, 255, 218, 0.2);
+        }
+
+        .project-link {
+            display: inline-flex;
+            align-items: center;
+            color: #64ffda;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .project-link:hover {
+            color: #64ffda;
+            transform: translateX(5px);
+        }
+
+        .arrow-icon {
+            margin-left: 0.5rem;
+            fill: currentColor;
+            transition: transform 0.3s ease;
+        }
+
+        .project-link:hover .arrow-icon {
+            transform: translateX(5px);
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+
+        .project-card:nth-child(even) {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .project-card:nth-child(odd) {
+            animation: float 6s ease-in-out infinite 3s;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Updated Navigation -->
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#myPage">FoC</a>
+        </div>
+        <div class="collapse navbar-collapse" id="myNavbar">
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="index.html">HOME</a></li>
+                <li><a href="project.html">PROJECTS</a></li>
+                <li><a href="concepts.html">CONCEPTS</a></li>
+                <li><a href="database.html">DATABASE</a></li>
+                <li><a href="documentation.html">DOCS</a></li>
+                <li><a href="aboutme.html">TEAM</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- Updated Main Content -->
+<div class="container-fluid">
+    <h1 class="section-title">Interactive Projects</h1>
+    <p class="section-subtitle">Explore and learn through hands-on experiences</p>
+    
+    <div class="row">
+        <div class="col-md-4">
+            <div class="project-card">
+                <div class="project-card-inner">
+                    <div class="project-number">01</div>
+                    <div class="project-content">
+                        <h3>NOT Gate</h3>
+                        <p>Discover the fundamental building block of digital logic. Interactive simulations and real-world applications.</p>
+                        <div class="tech-stack">
+                            <span class="tech-tag">Digital Logic</span>
+                            <span class="tech-tag">Boolean</span>
+                        </div>
+                        <a href="notgate.html" class="project-link">
+                            Explore Project
+                            <svg class="arrow-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+                                <path fill="none" d="M0 0h24v24H0z"/>
+                                <path d="M16.172 11l-5.364-5.364 1.414-1.414L20 12l-7.778 7.778-1.414-1.414L16.172 13H4v-2z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="project-card">
+                <div class="project-card-inner">
+                    <div class="project-number">02</div>
+                    <div class="project-content">
+                        <h3>AND Gate</h3>
+                        <p>Master the AND gate through interactive exercises and visual demonstrations.</p>
+                        <div class="tech-stack">
+                            <span class="tech-tag">Logic Gates</span>
+                            <span class="tech-tag">Circuits</span>
+                        </div>
+                        <a href="andgate.html" class="project-link">
+                            Explore Project
+                            <svg class="arrow-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+                                <path fill="none" d="M0 0h24v24H0z"/>
+                                <path d="M16.172 11l-5.364-5.364 1.414-1.414L20 12l-7.778 7.778-1.414-1.414L16.172 13H4v-2z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="project-card">
+                <div class="project-card-inner">
+                    <div class="project-number">02E</div>
+                    <div class="project-content">
+                        <h3>AND Gate - Easy Version</h3>
+                        <p>A simplified approach to understanding AND gates, perfect for beginners.</p>
+                        <div class="tech-stack">
+                            <span class="tech-tag">Logic Gates</span>
+                            <span class="tech-tag">Beginner</span>
+                        </div>
+                        <a href="easyand.html" class="project-link">
+                            Explore Project
+                            <svg class="arrow-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+                                <path fill="none" d="M0 0h24v24H0z"/>
+                                <path d="M16.172 11l-5.364-5.364 1.414-1.414L20 12l-7.778 7.778-1.414-1.414L16.172 13H4v-2z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="project-card">
+                <div class="project-card-inner">
+                    <div class="project-number">03</div>
+                    <div class="project-content">
+                        <h3>Binary to Hexadecimal</h3>
+                        <p>Convert binary numbers to hexadecimal format with interactive tools and examples.</p>
+                        <div class="tech-stack">
+                            <span class="tech-tag">Number Systems</span>
+                            <span class="tech-tag">Conversion</span>
+                        </div>
+                        <a href="binarytohex.html" class="project-link">
+                            Explore Project
+                            <svg class="arrow-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+                                <path fill="none" d="M0 0h24v24H0z"/>
+                                <path d="M16.172 11l-5.364-5.364 1.414-1.414L20 12l-7.778 7.778-1.414-1.414L16.172 13H4v-2z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="project-card">
+                <div class="project-card-inner">
+                    <div class="project-number">04</div>
+                    <div class="project-content">
+                        <h3>ASCII Converter</h3>
+                        <p>Convert text to ASCII values and understand character encoding fundamentals.</p>
+                        <div class="tech-stack">
+                            <span class="tech-tag">Character Encoding</span>
+                            <span class="tech-tag">ASCII</span>
+                        </div>
+                        <a href="ascii.html" class="project-link">
+                            Explore Project
+                            <svg class="arrow-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+                                <path fill="none" d="M0 0h24v24H0z"/>
+                                <path d="M16.172 11l-5.364-5.364 1.414-1.414L20 12l-7.778 7.778-1.414-1.414L16.172 13H4v-2z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="project-card">
+                <div class="project-card-inner">
+                    <div class="project-number">04U</div>
+                    <div class="project-content">
+                        <h3>UNICODE Converter</h3>
+                        <p>Explore the universal character encoding standard with this interactive converter.</p>
+                        <div class="tech-stack">
+                            <span class="tech-tag">Character Encoding</span>
+                            <span class="tech-tag">UNICODE</span>
+                        </div>
+                        <a href="unicode.html" class="project-link">
+                            Explore Project
+                            <svg class="arrow-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+                                <path fill="none" d="M0 0h24v24H0z"/>
+                                <path d="M16.172 11l-5.364-5.364 1.414-1.414L20 12l-7.778 7.778-1.414-1.414L16.172 13H4v-2z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="project-card">
+                <div class="project-card-inner">
+                    <div class="project-number">05</div>
+                    <div class="project-content">
+                        <h3>Machine Language</h3>
+                        <p>Learn the basics of machine language and how computers process instructions.</p>
+                        <div class="tech-stack">
+                            <span class="tech-tag">Assembly</span>
+                            <span class="tech-tag">Low-Level</span>
+                        </div>
+                        <a href="MLinstructions.html" class="project-link">
+                            Explore Project
+                            <svg class="arrow-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+                                <path fill="none" d="M0 0h24v24H0z"/>
+                                <path d="M16.172 11l-5.364-5.364 1.414-1.414L20 12l-7.778 7.778-1.414-1.414L16.172 13H4v-2z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Footer -->
+<footer>
+    <p>@ Powered by UB</p>
+</footer>
+
+<!-- Bootstrap JS -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+</body>
+</html>

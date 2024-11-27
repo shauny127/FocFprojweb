@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>FoC</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+		 body {
+            background-color: #1a1a1a;  /* Light black background */
+            position: relative;
+            color: #fff;
+            min-height: 100vh;
+            overflow-x: hidden;
+            font-size: 16px;
+        }
+
+        /* Enhanced stars effect */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(white, rgba(255,255,255,.2) 2px, transparent 4px),
+                radial-gradient(white, rgba(255,255,255,.15) 1px, transparent 2px),
+                radial-gradient(white, rgba(255,255,255,.1) 2px, transparent 3px),
+                radial-gradient(rgba(255,255,255,.4), rgba(255,255,255,.1) 2px, transparent 5px);
+            background-size: 550px 550px, 350px 350px, 250px 250px, 150px 150px;
+            background-position: 0 0, 40px 60px, 130px 270px, 70px 100px;
+            animation: twinkle 15s ease-in-out infinite alternate;
+        }
+
+        @keyframes twinkle {
+            0% {
+                background-position: 0 0, 40px 60px, 130px 270px, 70px 100px;
+            }
+            50% {
+                background-position: -25px -25px, -20px -30px, -65px -135px, -35px -50px;
+            }
+            100% {
+                background-position: -50px -50px, -40px -60px, -130px -270px, -70px -100px;
+            }
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: rgba(40, 40, 40, 0.9);
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.3),
+                        0 0 50px rgba(74, 144, 226, 0.1);
+            backdrop-filter: blur(10px);
+            position: relative;
+            z-index: 1;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .ascii-image-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            z-index: 0;
+            pointer-events: none;
+            opacity: 0.2;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            animation: float 8s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0) scale(1);
+            }
+            50% {
+                transform: translateY(-20px) scale(1.02);
+            }
+        }
+
+        button {
+            background: linear-gradient(45deg, #4a90e2, #357abd);
+            border: none;
+            padding: 12px 25px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 15px rgba(74, 144, 226, 0.3);
+        }
+
+        button:hover {
+            background: linear-gradient(45deg, #357abd, #4a90e2);
+            transform: translateY(-2px) scale(1.05);
+            box-shadow: 0 0 25px rgba(74, 144, 226, 0.5);
+        }
+
+        #demo {
+            color: #ffffff;  /* Changed to white for better visibility */
+            text-shadow: 0 0 10px rgba(74, 144, 226, 0.5),
+                         0 0 20px rgba(74, 144, 226, 0.3);
+            font-size: 48px;  /* Increased size */
+            font-weight: bold;
+            transition: all 0.3s ease;
+            margin: 20px 0;
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        input {
+            background-color: rgba(255, 255, 255, 0.1) !important;
+            border: 1px solid rgba(255, 255, 255, 0.2) !important;
+            color: white !important;
+            transition: all 0.3s ease !important;
+        }
+
+        input:focus {
+            background-color: rgba(255, 255, 255, 0.15) !important;
+            box-shadow: 0 0 20px rgba(74, 144, 226, 0.3) !important;
+            transform: scale(1.02);
+        }
+
+        h2 {
+            text-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+            margin-bottom: 30px;
+            font-weight: bold;
+            background: linear-gradient(45deg, #fff, #4a90e2);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Updated footer to match background */
+        footer {
+            background-color: #1a1a1a;
+            color: rgba(255, 255, 255, 0.5);
+            text-align: center;
+            padding: 20px 0;
+            position: relative;
+            z-index: 1;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+        }
+
+        .back-link {
+            color: #4a90e2;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            position: relative;
+            padding: 5px 10px;
+        }
+
+        .back-link:hover {
+            color: #357abd;
+            text-shadow: 0 0 10px rgba(74, 144, 226, 0.5);
+        }
+
+        .back-link::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: #4a90e2;
+            transition: width 0.3s ease;
+        }
+
+        .back-link:hover::before {
+            width: 100%;
+        }
+
+        /* Enhanced pulse animation for the result */
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+                text-shadow: 0 0 10px rgba(74, 144, 226, 0.5);
+            }
+            50% {
+                transform: scale(1.1);
+                text-shadow: 0 0 20px rgba(74, 144, 226, 0.8),
+                             0 0 30px rgba(74, 144, 226, 0.5);
+            }
+            100% {
+                transform: scale(1);
+                text-shadow: 0 0 10px rgba(74, 144, 226, 0.5);
+            }
+        }
+
+        #demo:not(:empty) {
+            animation: pulse 2s infinite;
+            display: inline-block;
+        }
+
+        /* Style for the ASCII Value label */
+        .result p:first-child {
+            color: #ffffff;
+            font-size: 20px;
+            margin-bottom: 10px;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+        }
+    </style>
+</head>
+<body>
+
+<section class="container mt-5">
+    <h2>Project 1: ASCII</h2>
+    <hr>	
+    <div class="text-center">
+        <img src="ascii.png" class="img-fluid" alt="ASCII Project">
+    </div>
+        
+    <p>Enter any number from 0 to 127 :</p>
+    <input id="inputdec" class="form-control" style="width: 200px; display: inline-block;">
+    <p></p>
+    <button onclick="decToASCII()" class="btn btn-primary">Submit</button>
+    <p></p>
+    <p>ASCII Value :</p>
+    <p id="demo"></p>
+</section>
+
+<a href="index.html" class="btn btn-link">Back to Home</a>
+
+<footer>
+        <p>@ Powered by UB</p>
+    </footer>
+
+<script>
+function decToASCII() {
+    x = document.getElementById("inputdec").value;
+    var res = String.fromCharCode(x);
+    document.getElementById("demo").innerHTML = res;
+    console.log(res);
+}
+</script>
+
+</body>
+</html>

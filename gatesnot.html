@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>NOT Gate Simulator</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(135deg, #1a1a1a, #2d2d2d, #1a1a1a);
+            min-height: 100vh;
+            padding: 20px;
+            color: #ffffff;
+            position: relative;
+            overflow-x: hidden;
+        }
+        
+        body::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(white, rgba(255,255,255,.2) 2px, transparent 3px),
+                radial-gradient(white, rgba(255,255,255,.15) 1px, transparent 2px),
+                radial-gradient(white, rgba(255,255,255,.1) 2px, transparent 3px);
+            background-size: 550px 550px, 350px 350px, 250px 250px;
+            background-position: 0 0, 40px 60px, 130px 270px;
+            z-index: 1;
+            animation: starTwinkle 15s linear infinite;
+        }
+
+        .gate-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            position: relative;
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 90vh;
+        }
+
+        .image-container {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 4px 25px rgba(0,0,0,0.2);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.1);
+            width: 100%;
+            text-align: center;
+        }
+
+        .img-fluid {
+            max-width: 80%;
+            height: auto;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="gate-container">
+        <h1 class="text-center mb-4">NOT Gate Logic Simulator</h1>
+        
+        <div class="button-container">
+            <button class="btn btn-primary gate-button" onclick="document.getElementById('myImage').src='noton2.png'">
+                OFF
+            </button>
+            <button class="btn btn-info gate-button" onclick="document.getElementById('myImage').src='notoff2.png'">
+                ON
+            </button>
+        </div>
+
+        <div class="image-container">
+            <img id="myImage" src="notoff2.png" alt="NOT Gate" class="img-fluid">
+        </div>
+
+        <div class="text-center">
+            <a href="index.html" class="back-link">Back to Home</a>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

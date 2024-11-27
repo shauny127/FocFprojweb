@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Fundamentals of Computing - Computer Science Course</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Learn the core principles of Computer Science with our comprehensive course covering computer architecture, operating systems, networks, and more.">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700|Montserrat:400,600" rel="stylesheet">
+    
+    <style>
+    :root {
+        --primary-color: #2d2d30;
+        --text-color: #777;
+        --light-color: #f5f5f5;
+        --hover-color: #fff;
+    }
+
+    body {
+        font: 400 16px/1.8 'Lato', sans-serif;
+        color: var(--text-color);
+    }
+
+    h1, h2, h3, h4, .navbar {
+        font-family: 'Montserrat', sans-serif;
+    }
+
+    /* Navbar Styles */
+    .navbar {
+        margin-bottom: 0;
+        background-color: var(--primary-color);
+        border: 0;
+        font-size: 13px !important;
+        letter-spacing: 3px;
+        opacity: 0.95;
+        transition: all 0.3s ease;
+    }
+
+    .navbar-brand {
+        font-weight: 600;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .navbar-brand:after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: var(--hover-color);
+        transition: width 0.3s ease;
+    }
+
+    .navbar-brand:hover:after {
+        width: 100%;
+    }
+
+    .navbar-nav li a {
+        position: relative;
+        transition: all 0.3s ease;
+    }
+
+    .navbar-nav li a:before {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        width: 0;
+        height: 2px;
+        background: var(--hover-color);
+        transition: all 0.3s ease;
+    }
+
+    .navbar-nav li a:hover:before {
+        width: 100%;
+        left: 0;
+    }
+
+    /* Carousel Improvements */
+    .carousel-inner img {
+        width: 100%;
+        height: 80vh;
+        object-fit: cover;
+        filter: brightness(0.7);
+    }
+
+    .carousel-caption {
+        bottom: 30%;
+        text-align: center;
+        opacity: 0;
+        transform: translateY(20px);
+        transition: all 0.8s ease;
+    }
+
+    .carousel .active .carousel-caption {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .carousel-caption h3 {
+        font-size: 2.5em;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        text-shadow: 2px 2px 8px rgba(0,0,0,0.5);
+    }
+
+    /* Course Description Section */
+    .course-description {
+        background-color: var(--primary-color);
+        padding: 80px 0;
+        position: relative;
+        animation: fadeInUp 1s ease-out;
+    }
+
+    .course-description::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 3px;
+        background: linear-gradient(to right, #2d2d30, #777, #2d2d30);
+    }
+
+    .course-description p {
+        color: var(--light-color);
+        font-size: 18px;
+        line-height: 1.8;
+        max-width: 900px;
+        margin: 0 auto;
+        font-weight: 300;
+        position: relative;
+        animation: slideInFromLeft 1s ease-out;
+    }
+
+    /* Footer Improvements */
+    footer {
+        background-color: var(--primary-color);
+        color: var(--light-color);
+        padding: 40px 0;
+        position: relative;
+    }
+
+    footer a {
+        color: var(--light-color);
+        transition: color 0.3s ease;
+    }
+
+    footer a:hover {
+        color: var(--text-color);
+        text-decoration: none;
+    }
+
+    /* Responsive Improvements */
+    @media (max-width: 768px) {
+        .carousel-caption h3 {
+            font-size: 1.8em;
+        }
+        
+        .course-description p {
+            font-size: 16px;
+            padding: 0 20px;
+        }
+    }
+
+    /* Cool Animations */
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    @keyframes slideInFromLeft {
+        from {
+            opacity: 0;
+            transform: translateX(-30px);
+        }
+        to {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+
+    /* Carousel Enhancements */
+    .carousel-inner img {
+        transition: transform 0.5s ease, filter 0.5s ease;
+    }
+
+    .carousel-inner .item:hover img {
+        transform: scale(1.05);
+        filter: brightness(0.8);
+    }
+
+    /* Hover Effects */
+    .btn {
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .btn:after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 0;
+        height: 0;
+        background: rgba(255,255,255,0.1);
+        border-radius: 50%;
+        transform: translate(-50%, -50%);
+        transition: width 0.6s ease, height 0.6s ease;
+    }
+
+    .btn:hover:after {
+        width: 300px;
+        height: 300px;
+    }
+
+    /* Scroll Reveal Classes */
+    .reveal {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: all 0.8s ease;
+    }
+
+    .reveal.active {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    </style>
+</head>
+<body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="50">
+
+<!-- Navbar -->
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#myPage">FoC</a>
+        </div>
+        <div class="collapse navbar-collapse" id="myNavbar">
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="index.html">HOME</a></li>
+                <li><a href="project.html">PROJECTS</a></li>
+                <li><a href="concepts.html">CONCEPTS</a></li>
+                <li><a href="database.html">DATABASE</a></li>
+                <li><a href="documentation.html">DOCS</a></li>
+                <li><a href="aboutme.html">TEAM</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- Carousel -->
+<div id="myCarousel" class="carousel slide" data-ride="carousel">
+    <ol class="carousel-indicators">
+        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+        <li data-target="#myCarousel" data-slide-to="1"></li>
+        <li data-target="#myCarousel" data-slide-to="2"></li>
+        <li data-target="#myCarousel" data-slide-to="3"></li>
+    </ol>
+    <div class="carousel-inner" role="listbox">
+        <div class="item active">
+            <img src="wp2915533.jpg" alt="Computer Science Concept Visualization">
+            <div class="carousel-caption">
+                <h3>Explore Computing</h3>
+            </div>
+        </div>
+        <div class="item">
+            <img src="scenery 4.jpg" alt="Technology Innovation">
+            <div class="carousel-caption">
+                <h3>Innovate Solutions</h3>
+            </div>
+        </div>
+        <div class="item">
+            <img src="photo2.jpg" alt="Digital Transformation">
+            <div class="carousel-caption">
+                <h3>Transform Future</h3>
+            </div>
+        </div>
+        <div class="item">
+            <img src="beautiful-black-and-white-.jpg" alt="Technology Landscape">
+            <div class="carousel-caption">
+                <h3>Build Tomorrow</h3>
+            </div>
+        </div>
+    </div>
+    <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+    </a>
+    <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+    </a>
+</div>
+
+<!-- Course Description -->
+<section class="course-description">
+    <div class="container text-center">
+        <p>
+            This course offers an introduction to the core principles of Computer Science, providing students with a solid foundation for more advanced studies in the field. It presents a broad survey of key topics, enabling students to grasp the full scope of computer systems and their capabilities. Areas of focus include computer architecture, operating systems, computer networks, software development, data organization and visualization, and the vast potential of computing technologies.
+        </p>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer>
+    <div class="container text-center">
+        <p>&copy; 2024 Fundamentals of Computing | Powered by UB</p>
+    </div>
+</footer>
+
+<!-- Scripts -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+<script>
+    // Scroll reveal animation
+    window.addEventListener('scroll', reveal);
+
+    function reveal() {
+        var reveals = document.querySelectorAll('.reveal');
+        
+        reveals.forEach(element => {
+            var windowHeight = window.innerHeight;
+            var elementTop = element.getBoundingClientRect().top;
+            var elementVisible = 150;
+            
+            if (elementTop < windowHeight - elementVisible) {
+                element.classList.add('active');
+            }
+        });
+    }
+
+    // Smooth scroll for navigation
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            document.querySelector(this.getAttribute('href')).scrollIntoView({
+                behavior: 'smooth'
+            });
+        });
+    });
+
+    // Add loading animation
+    window.addEventListener('load', function() {
+        document.body.classList.add('loaded');
+    });
+
+    // Navbar scroll effect
+    window.addEventListener('scroll', function() {
+        if (window.scrollY > 50) {
+            document.querySelector('.navbar').style.backgroundColor = 'rgba(45, 45, 48, 0.9)';
+        } else {
+            document.querySelector('.navbar').style.backgroundColor = 'var(--primary-color)';
+        }
+    });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>FoC</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body { 
+            background: #2a2a2a;
+            background-image: 
+                radial-gradient(white, rgba(255,255,255,.4) 1px, transparent 6px),
+                radial-gradient(white, rgba(255,255,255,.3) 1px, transparent 5px),
+                radial-gradient(#4a90e2, rgba(74,144,226,.2) 2px, transparent 7px);
+            background-size: 300px 300px, 200px 200px, 250px 250px;
+            background-position: 0 0, 40px 60px, 130px 270px;
+            animation: twinkle 10s infinite linear;
+            color: #ffffff;
+            text-align: center;
+        }
+
+        @keyframes twinkle {
+            from { background-position: 0 0, 40px 60px, 130px 270px; }
+            to { background-position: 300px 300px, 240px 260px, 430px 470px; }
+        }
+
+        /* Update heading gradient for better visibility on dark background */
+        h2 {
+            background: linear-gradient(45deg, #fff, #4a90e2);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 15px rgba(74, 144, 226, 0.5);
+            margin-bottom: 30px;
+        }
+
+        /* Add subtle glow to buttons */
+        .btn-primary {
+            background: #4a90e2;
+            border: none;
+            box-shadow: 0 0 15px rgba(74, 144, 226, 0.5);
+            margin: 20px 0;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            margin: 20px 0;
+            position: relative;
+            z-index: 1;
+            box-shadow: 0 0 20px rgba(74, 144, 226, 0.3);
+        }
+
+        .container {
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Footer Style */
+        footer {
+            background-color: #221e2c; /* Change the background color to #bda2ff */
+            color: white; /* Set text color to white for contrast */
+            text-align: center; /* Center the text */
+            padding: 10px 0; /* Add padding to the footer */
+            font-size: 14px; /* Optional: Adjust the font size of the footer text */
+        }
+  body { background-color: #2a2535 ; font-size: 16px; }
+		
+        /* Make text more visible */
+        p {
+            color: #ffffff;
+            text-shadow: 0 0 4px rgba(74, 144, 226, 0.6);
+            font-size: 1.2rem;
+            margin: 15px 0;
+        }
+
+        /* Make input text visible */
+        input {
+            color: #000000;
+            background: #ffffff;
+            text-align: center;
+            border: 2px solid #4a90e2;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(74, 144, 226, 0.3);
+        }
+    </style>
+</head>
+<body>
+
+<section class="container mt-5">
+    <h2>Project 1: Binary to Hexadecimal</h2>
+    <hr>	
+    
+    <div class="text-center">
+        <img src="bintohex.jpg" alt="Binary to Hexadecimal">
+    </div>
+    
+    <p>Enter any 4 digit binary number:</p>
+    <input type="number" id="inputBin" class="form-control" style="width: 200px; display: inline-block;">
+    
+    <p class="mt-3">
+        <button onclick="binToHex()" class="btn btn-primary">Submit</button>
+    </p>
+
+    <p>Hexadecimal Value:</p>
+    <p id="demo"></p>
+</section>
+
+<a href="index.html" class="btn btn-link">Back to Home</a>
+
+<footer>
+    <p>@ Powered by UB</p>
+</footer>
+
+<script>
+function binToHex() {
+    var x = document.getElementById("inputBin").value;
+    var hexOut = parseInt(x, 2).toString(16).toUpperCase();
+    document.getElementById("demo").innerHTML = hexOut;
+}
+</script>
+
+</body>
+</html>

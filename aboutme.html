@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dev Team</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #1a1a1a;
+            --hover-color: #fff;
+        }
+
+        h1, h2, h3, h4, .navbar {
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        /* Navbar Styles */
+        .navbar {
+            margin-bottom: 0;
+            background-color: var(--primary-color);
+            border: 0;
+            font-size: 13px !important;
+            letter-spacing: 3px;
+            opacity: 0.95;
+            transition: all 0.3s ease;
+        }
+
+        .navbar-brand {
+            font-weight: 600;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .navbar-brand:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--hover-color);
+            transition: width 0.3s ease;
+        }
+
+        .navbar-brand:hover:after {
+            width: 100%;
+        }
+
+        .navbar-nav li a {
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .navbar-nav li a:before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: var(--hover-color);
+            transition: all 0.3s ease;
+        }
+
+        .navbar-nav li a:hover:before {
+            width: 100%;
+            left: 0;
+        }
+
+        /* Rest of your existing styles */
+        body {
+            background: linear-gradient(135deg, #1a1a1a, #2d2d2d, #1a1a1a);
+            min-height: 100vh;
+            padding: 20px;
+            color: #ffffff;
+            position: relative;
+            overflow-x: hidden;
+            margin-top: 60px;
+        }
+        
+        .milkyway {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 200%;
+            height: 100%;
+            background: url('https://www.transparenttextures.com/patterns/stardust.png'),
+                        linear-gradient(to right, 
+                            rgba(41, 41, 41, 0.6), 
+                            rgba(126, 64, 182, 0.3),
+                            rgba(41, 41, 41, 0.6));
+            z-index: 0;
+            animation: milkyWayMove 80s linear infinite;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            width: 200%;
+            height: 200%;
+            background-image: 
+                radial-gradient(white, rgba(255,255,255,.2) 2px, transparent 3px),
+                radial-gradient(white, rgba(255,255,255,.15) 1px, transparent 2px),
+                radial-gradient(white, rgba(255,255,255,.1) 2px, transparent 3px);
+            background-size: 550px 550px, 350px 350px, 250px 250px;
+            background-position: 0 0, 40px 60px, 130px 270px;
+            z-index: 1;
+            animation: starMove 150s linear infinite;
+        }
+
+        @keyframes starMove {
+            from { transform: translateY(0); }
+            to { transform: translateY(-550px); }
+        }
+
+        @keyframes milkyWayMove {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        .team-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .team-member {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 25px rgba(0,0,0,0.2);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.1);
+            margin-bottom: 30px;
+        }
+
+        .profile-img {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 20px;
+            border: 3px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .social-links a {
+            display: inline-block;
+            color: #fff;
+            text-decoration: none;
+            margin: 0 10px;
+            padding: 8px 20px;
+            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .navbar {
+            min-height: 60px;
+            margin-bottom: 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+
+        .navbar-brand {
+            height: 60px;
+            line-height: 30px;
+        }
+
+        .navbar-nav > li > a {
+            line-height: 30px;
+        }
+
+        .navbar-toggle {
+            margin-top: 13px;
+            margin-bottom: 13px;
+        }
+
+        .navbar-default .navbar-toggle .icon-bar {
+            background-color: rgba(255, 255, 255, 0.7);
+        }
+
+        .team-container {
+            margin-top: 80px;
+        }
+
+        @media (max-width: 768px) {
+            .navbar-collapse {
+                background: rgba(0, 0, 0, 0.8);
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#myPage">FoC</a>
+            </div>
+            <div class="collapse navbar-collapse" id="myNavbar">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="index.html">HOME</a></li>
+                    <li><a href="project.html">PROJECTS</a></li>
+                    <li><a href="concepts.html">CONCEPTS</a></li>
+                    <li><a href="database.html">DATABASE</a></li>
+                    <li><a href="documentation.html">DOCS</a></li>
+                    <li><a href="aboutme.html">TEAM</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Rest of your content -->
+    <div class="milkyway"></div>
+    <div class="team-container">
+        <h1 class="text-center text-white mb-5 pt-4">Our Development Team</h1>
+        
+        <div class="row justify-content-center">
+            <div class="col-md-6 mb-4">
+                <div class="team-member text-center">
+                    <img src="shandysalam2024160888.jpeg" alt="Shandy Salam" class="profile-img">
+                    <h3 class="text-white">Shandy Salam</h3>
+                    <p class="text-white-50">Computer Science Student at University of Belize</p>
+                    <div class="social-links">
+                        <a href="https://shauny127.github.io/index.html/" target="_blank">Resume</a>
+                        <a href="https://github.com/shauny127" target="_blank">GitHub</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 mb-4">
+                <div class="team-member text-center">
+                    <img src="WC Profile.jpg" alt="Wasani Castillo" class="profile-img">
+                    <h3 class="text-white">Wasani Castillo</h3>
+                    <p class="text-white-50">Computer Science Student at University of Belize</p>
+                    <div class="social-links">
+                        <a href="https://wasaniub.github.io/resuboots.html/" target="_blank">Resume</a>
+                        <a href="https://github.com/wasaniUB" target="_blank">GitHub</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 mb-4">
+                <div class="team-member text-center">
+                    <img src="Lorelie Martinez.jpeg" alt="Lorelie Martinez" class="profile-img">
+                    <h3 class="text-white">Lorelie Martinez</h3>
+                    <p class="text-white-50">Computer Science Student at University of Belize</p>
+                    <div class="social-links">
+                        <a href="https://lorelie31.github.io/resume/" target="_blank">Resume</a>
+                        <a href="https://github.com/lorelie31" target="_blank">GitHub</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 mb-4">
+                <div class="team-member text-center">
+                    <img src="delrick.png" alt="Delrick Pandy" class="profile-img">
+                    <h3 class="text-white">Delrick Pandy</h3>
+                    <p class="text-white-50">Computer Science Student at University of Belize</p>
+                    <div class="social-links">
+                        <a href="https://delrickpandy.github.io/Resume/" target="_blank">Resume</a>
+                        <a href="https://github.com/delrickpandy" target="_blank">GitHub</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="text-center mb-5">
+            <a href="index.html" class="btn btn-outline-light">Back to Home</a>
+        </div>
+    </div>
+
+    <footer class="text-center text-white py-3" style="position: fixed; bottom: 0; width: 100%; background: rgba(0, 0, 0, 0.5); backdrop-filter: blur(10px);">
+        <div class="container">
+            <p class="mb-0">© UB 2024.</p>
+        </div>
+    </footer>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</body>
+</html>
